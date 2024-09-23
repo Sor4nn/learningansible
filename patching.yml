@@ -1,0 +1,9 @@
+---
+- name: Upgrade all packages on CentOS/RHEL
+  hosts: all
+  become: yes  # Use sudo to run the command with elevated privileges
+  tasks:
+    - name: Upgrade all packages
+      yum:
+        name: '*'
+        state: latest
