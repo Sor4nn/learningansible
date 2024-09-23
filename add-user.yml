@@ -1,0 +1,13 @@
+---
+- name: Add user on linux
+  hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Add user
+      user:
+        name: "{{ username }}"
+        state: present
+        update_password: always
+        password: "{{ newpassword|password_hash('sha512') }}"
+...
